@@ -27,7 +27,7 @@ if [ -z "$USUARIO_LAB" ]; then
 	echo "No se encontro usuario Laboratorio"
 else
 	echo "Se encontro $USUARIO_LAB"
-	if [ -f "/home/$USUARIO_LAB/Descargas/InfostatSetup.exe" ]; then
+	if [ -f "/home/$USUARIO_LAB/Descargas/infostatinstaller_esp.exe" ]; then
 		sudo -u "$USUARIO_LAB" wine "/home/$USUARIO_LAB/Descargas/InfostatSetup.exe"
 	else
 		echo "No se encontro el instalador de infostat en descargas"
