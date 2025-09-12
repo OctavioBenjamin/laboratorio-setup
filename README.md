@@ -9,6 +9,13 @@
 sudo apt install git
 ```
 # Como usar
+
+Primero! Clonar el repositorio y moverse
+```sh
+git clone https://github.com/OctavioBenjamin/laboratorio-setup
+cd laboratorio-setup
+```
+
 ### Script sh
 Instala LibreOffice, algunos paquetes basicos y desactiva la suspension de la pantalla.
 ```sh
