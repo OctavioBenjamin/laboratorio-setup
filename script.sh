@@ -3,7 +3,6 @@
 # -- Instalacion de paquetes basicos
 echo "Paquetes basicos"
 sudo apt update
-sudo apt install -y wget unzip libreoffice
 
 # -- Desactivar suspension automatica
 echo "Desactivando la suspension automatica"

@@ -6,24 +6,80 @@ set -e
 # Actualizar repositorios
 sudo apt update
 
-# Instalar Wine (para ejecutar InfoStat)
-sudo apt install -y wine
 
-# Instalar LibreOffice
+###########################################################
+# Wine (https://wiki.winehq.org/Download)
+###########################################################
+sudo dpkg --add-architecture i386
+sudo apt update
+sudo apt install -y wget gnupg2 software-properties-common
+sudo mkdir -pm755 /etc/apt/keyrings
+wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/noble/winehq-noble.sources
+sudo apt update
+sudo apt install --install-recommends -y winehq-stable
+wine --version
+
+###########################################################
+# LibreOffice (https://www.libreoffice.org/download/download/)
+###########################################################
 sudo apt install -y libreoffice
 
-# Instalar lector de PDF (Evince)
+###########################################################
+# Evince (https://wiki.gnome.org/Apps/Evince)
+###########################################################
 sudo apt install -y evince
 
-# Instalar descompresores (p7zip y unzip)
+###########################################################
+# p7zip (https://p7zip.sourceforge.net/) y unzip (https://linux.die.net/man/1/unzip)
+###########################################################
 sudo apt install -y p7zip-full unzip
 
-# Instalar InfoStat (requiere archivo de instalación, modificar la ruta si es necesario)
-INFOSTAT_INSTALLER="InfoStatSetup.exe"
-if [ -f "$INFOSTAT_INSTALLER" ]; then
-    wine "$INFOSTAT_INSTALLER"
+
+###########################################################
+# InfoStat (https://www.infostat.com.ar/)
+###########################################################
+INFOSTAT_DL="$HOME/Descargas/InfoStatSetup.exe"
+INFOSTAT_CUR="$(pwd)/InfoStatSetup.exe"
+if [ -f "$INFOSTAT_DL" ]; then
+    cd "$HOME/Descargas"
+    wine InfoStatSetup.exe
+elif [ -f "$INFOSTAT_CUR" ]; then
+    wine "$INFOSTAT_CUR"
 else
-    echo "Por favor, coloque el instalador de InfoStat ($INFOSTAT_INSTALLER) en el mismo directorio que este script."
+    echo "No se encontró el instalador de InfoStat (InfoStatSetup.exe) ni en Descargas ni en el directorio actual."
 fi
 
 echo "Instalación completada."
+# Crear accesos directos en el escritorio
+DESKTOP_DIR="$HOME/Desktop"
+
+# Acceso directo para InfoStat
+INFOSTAT_DESKTOP="$DESKTOP_DIR/InfoStat.desktop"
+cat > "$INFOSTAT_DESKTOP" <<EOL
+[Desktop Entry]
+Name=InfoStat
+Comment=Iniciar InfoStat con Wine
+Exec=wine \"$HOME/.wine/drive_c/Program Files/InfoStat/InfoStat.exe\"
+Icon=wine
+Terminal=false
+Type=Application
+Categories=Education;
+EOL
+chmod +x "$INFOSTAT_DESKTOP"
+
+# Acceso directo para LibreOffice
+LIBREOFFICE_DESKTOP="$DESKTOP_DIR/LibreOffice.desktop"
+cat > "$LIBREOFFICE_DESKTOP" <<EOL
+[Desktop Entry]
+Name=LibreOffice
+Comment=Suite ofimática LibreOffice
+Exec=libreoffice
+Icon=libreoffice-main
+Terminal=false
+Type=Application
+Categories=Office;
+EOL
+chmod +x "$LIBREOFFICE_DESKTOP"
+
+echo "Instalación completada. Accesos directos creados en el escritorio."
