@@ -1,5 +1,15 @@
 # Setup basico para laboratorio
 
+# NUEVOS PASOS
+
+1. Entrar a admin
+2. Darle permisos sudo a laboratorio
+3. Iniciar laboratorio
+4. Descargar infostat en descargas
+5. Clonar el repo
+6. Ejectuar el nuevo script
+7. Volver a admin y sacarle permisos sudo a laboratorio
+
 ### Recordar
 1. Descargar infostat
 2. Dejarlo en la carpeta Descargas
