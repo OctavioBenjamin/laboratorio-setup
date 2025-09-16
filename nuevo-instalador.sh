@@ -50,11 +50,6 @@ apt install -y evince
 apt install -y p7zip-full unzip
 
 ########################################################
-# Instalacion de Libreoffice
-########################################################
-apt install -y libreoffice
-
-########################################################
 # Instalacion de infostat
 ########################################################
 INFOSTAT_INSTALLER="$DESCARGAS_DIR/infostatinstaller_esp.exe"
@@ -69,19 +64,28 @@ fi
 ########################################################
 # Crear accesos directos
 ########################################################
-mkdir -p "$DESKTOP_DIR"
+
+#mkdir -p "$DESKTOP_DIR"
 
 #Acceso directo de infostat
-INFOSTAT_DESKTOP="$DESKTOP_DIR"/InfoStat.desktop
-cat > "$INFOSTAT_DESKTOP" <<EOL
-[Desktop Entry]
-Name=InfoStat
-Comment=Iniciar InfoStat con Wine
-Exec=wine "$HOME_USUARIO/.wine/drive_c/Program Files/InfoStat/InfoStat.exe"
-Icon=wine
-Terminal=false
-Type=Application
-Categories=Education;
-EOL
-chmod +x "$INFOSTAT_DESKTOP"
-chown "$USUARIO:$USUARIO" "$INFOSTAT_DESKTOP"
+#INFOSTAT_DESKTOP="$DESKTOP_DIR"/InfoStat.desktop
+#cat > "$INFOSTAT_DESKTOP" <<EOL
+#[Desktop Entry]
+#Name=InfoStat
+#Comment=Iniciar InfoStat con Wine
+#Exec=wine "$HOME_USUARIO/.wine/drive_c/Program Files/InfoStat/InfoStat.exe"
+#Icon=wine
+#Terminal=false
+#Type=Application
+#Categories=Education;
+#EOL
+#chmod +x "$INFOSTAT_DESKTOP"
+#chown "$USUARIO:$USUARIO" "$INFOSTAT_DESKTOP"
+
+########################################################
+# Quitar suspension de pantalla
+########################################################
+gsettings set org.gnome.desktop.session idle-delay 0
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'nothing'
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type 'nothing'
+
