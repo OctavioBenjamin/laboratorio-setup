@@ -17,12 +17,12 @@ cd laboratorio-setup
 ```
 
 ### Script sh
-Instala LibreOffice, algunos paquetes basicos y desactiva la suspension de la pantalla.
+Desactiva la suspension de la pantalla.
 ```sh
-sh script.sh
+sudo sh script.sh
 ```
-### script-install-wine-infostat
+### script-install-wine-infostat, libreofice, interprete de pdf y descompresor de archivos
 Falta corregirlo, deberia instalar wine y luego configurar infostat, despues genera un acceso directo en el escritorio.
 ```sh
-sh script-install-wine-infostat
+sudo bash instalar-paquetes.sh
 ```
