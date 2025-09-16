@@ -39,11 +39,11 @@ sudo apt install -y p7zip-full unzip
 ###########################################################
 # InfoStat (https://www.infostat.com.ar/)
 ###########################################################
-INFOSTAT_DL="$HOME/Descargas/InfoStatSetup.exe"
-INFOSTAT_CUR="$(pwd)/InfoStatSetup.exe"
+INFOSTAT_DL="$HOME/Descargas/infostatinstaller_esp.exe"
+INFOSTAT_CUR="$(pwd)/infostatinstaller_esp.exe"
 if [ -f "$INFOSTAT_DL" ]; then
     cd "$HOME/Descargas"
-    wine InfoStatSetup.exe
+    wine infostatinstaller_esp.exe
 elif [ -f "$INFOSTAT_CUR" ]; then
     wine "$INFOSTAT_CUR"
 else
