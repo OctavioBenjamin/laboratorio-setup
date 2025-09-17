@@ -52,13 +52,13 @@ apt install -y p7zip-full unzip
 ########################################################
 # Instalacion de infostat
 ########################################################
-INFOSTAT_INSTALLER="$DESCARGAS_DIR/infostatinstaller_esp.exe"
-if [ -f "$INFOSTAT_INSTALLER" ]; then
-	echo "Instalador encontrado en descargas"
-	sudo -u "$USUARIO" env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY wine "$INFOSTAT_INSTALLER"
-else
-	echo "No se encontro el instalador en descargas"
-fi
+#INFOSTAT_INSTALLER="$DESCARGAS_DIR/infostatinstaller_esp.exe"
+#if [ -f "$INFOSTAT_INSTALLER" ]; then
+#	echo "Instalador encontrado en descargas"
+#	sudo -u "$USUARIO" env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY wine "$INFOSTAT_INSTALLER"
+#else
+#	echo "No se encontro el instalador en descargas"
+#fi
 
 
 ########################################################
