@@ -1,5 +1,13 @@
 #! /bin/bash
 
+########################################################
+# Quitar suspension de pantalla
+########################################################
+gsettings set org.gnome.desktop.session idle-delay 0
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'nothing'
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type 'nothing'
+
+
 USUARIO="laboratorio"
 HOME_USUARIO="/home/$USUARIO"
 
@@ -63,23 +71,24 @@ apt install -y p7zip-full unzip
 
 ########################################################
 # Crear accesos directos
+
 ########################################################
 
 DESKTOP_DIR="$HOME/Escritorio"
 
 # Acceso directo para InfoStat
-INFOSTAT_DESKTOP="$ESCRITORIO_DIR/InfoStat.desktop"
-cat > "$INFOSTAT_DESKTOP" <<EOL
-[Desktop Entry]
-Name=InfoStat
-Comment=Iniciar InfoStat con Wine
-Exec=wine \"$HOME/.wine/drive_c/Program Files/InfoStat/InfoStat.exe\"
-Icon=wine
-Terminal=false
-Type=Application
-Categories=Education;
-EOL
-chmod +x "$INFOSTAT_DESKTOP"
+#INFOSTAT_DESKTOP="$ESCRITORIO_DIR/InfoStat.desktop"
+#cat > "$INFOSTAT_DESKTOP" <<EOL
+#[Desktop Entry]
+#Name=InfoStat
+#Comment=Iniciar InfoStat con Wine
+#Exec=wine \"$HOME/.wine/drive_c/Program Files/InfoStat/InfoStat.exe\"
+#Icon=wine
+#Terminal=false
+#Type=Application
+#Categories=Education;
+#EOL
+#chmod +x "$INFOSTAT_DESKTOP"
 
 # Acceso directo para LibreOffice
 LIBREOFFICE_DESKTOP="$ESCRITORIO_DIR/LibreOffice.desktop"
@@ -94,12 +103,3 @@ Type=Application
 Categories=Office;
 EOL
 chmod +x "$LIBREOFFICE_DESKTOP"
-
-
-########################################################
-# Quitar suspension de pantalla
-########################################################
-gsettings set org.gnome.desktop.session idle-delay 0
-gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'nothing'
-gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type 'nothing'
-
