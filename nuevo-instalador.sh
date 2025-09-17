@@ -65,22 +65,36 @@ fi
 # Crear accesos directos
 ########################################################
 
-#mkdir -p "$DESKTOP_DIR"
+DESKTOP_DIR="$HOME/Escritorio"
 
-#Acceso directo de infostat
-#INFOSTAT_DESKTOP="$DESKTOP_DIR"/InfoStat.desktop
-#cat > "$INFOSTAT_DESKTOP" <<EOL
-#[Desktop Entry]
-#Name=InfoStat
-#Comment=Iniciar InfoStat con Wine
-#Exec=wine "$HOME_USUARIO/.wine/drive_c/Program Files/InfoStat/InfoStat.exe"
-#Icon=wine
-#Terminal=false
-#Type=Application
-#Categories=Education;
-#EOL
-#chmod +x "$INFOSTAT_DESKTOP"
-#chown "$USUARIO:$USUARIO" "$INFOSTAT_DESKTOP"
+# Acceso directo para InfoStat
+INFOSTAT_DESKTOP="$ESCRITORIO_DIR/InfoStat.desktop"
+cat > "$INFOSTAT_DESKTOP" <<EOL
+[Desktop Entry]
+Name=InfoStat
+Comment=Iniciar InfoStat con Wine
+Exec=wine \"$HOME/.wine/drive_c/Program Files/InfoStat/InfoStat.exe\"
+Icon=wine
+Terminal=false
+Type=Application
+Categories=Education;
+EOL
+chmod +x "$INFOSTAT_DESKTOP"
+
+# Acceso directo para LibreOffice
+LIBREOFFICE_DESKTOP="$ESCRITORIO_DIR/LibreOffice.desktop"
+cat > "$LIBREOFFICE_DESKTOP" <<EOL
+[Desktop Entry]
+Name=LibreOffice
+Comment=Suite ofimática LibreOffice
+Exec=libreoffice
+Icon=libreoffice-main
+Terminal=false
+Type=Application
+Categories=Office;
+EOL
+chmod +x "$LIBREOFFICE_DESKTOP"
+
 
 ########################################################
 # Quitar suspension de pantalla
