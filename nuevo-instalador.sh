@@ -26,7 +26,9 @@ if [ ! -d "$HOME_USUARIO" ]; then
  	echo
 	exit 1
 else
+	echo
 	echo "Se encontro el usuario"
+ 	echo
 fi
 
 DESCARGAS_DIR="$HOME_USUARIO/Descargas"
