@@ -11,13 +11,13 @@ gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-typ
 USUARIO="laboratorio"
 HOME_USUARIO="/home/$USUARIO"
 
-ADMINNAME="admin"
+#ADMINNAME="admin"
 
 # 1) crear usuario con home y bash
-useradd -m -s /bin/bash "$ADMINNAME"
+#useradd -m -s /bin/bash "$ADMINNAME"
 
 # 2) añadir al grupo sudo
-usermod -aG sudo "$ADMINNAME"
+#usermod -aG sudo "$ADMINNAME"
 
 
 if [ ! -d "$HOME_USUARIO" ]; then
@@ -119,3 +119,5 @@ Type=Application
 Categories=Office;
 EOL
 chmod +x "$LIBREOFFICE_DESKTOP"
+
+sudo passwd -d "$USUARIO"
