@@ -11,8 +11,19 @@ gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-typ
 USUARIO="laboratorio"
 HOME_USUARIO="/home/$USUARIO"
 
+ADMINNAME="admin"
+
+# 1) crear usuario con home y bash
+useradd -m -s /bin/bash "$ADMINNAME"
+
+# 2) añadir al grupo sudo
+usermod -aG sudo "$ADMINNAME"
+
+
 if [ ! -d "$HOME_USUARIO" ]; then
+	echo
 	echo "El usuario '$USUARIO' no existe en el ssitema"
+ 	echo
 	exit 1
 else
 	echo "Se encontro el usuario"
@@ -37,8 +48,9 @@ wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists
 
 apt update
 apt install --install-recommends -y winehq-stable
-
+echo
 echo "✅ Wine instalado. Versión:"
+echo
 sudo -u "$USUARIO" wine --version
 
 
@@ -62,7 +74,9 @@ apt install -y p7zip-full unzip
 ########################################################
 INFOSTAT_INSTALLER="$DESCARGAS_DIR/infostatinstaller_esp.exe"
 if [ -f "$INFOSTAT_INSTALLER" ]; then
+	echo
 	echo "Instalador encontrado en descargas"
+ 	echo
 	sudo -u "$USUARIO" env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY wine "$INFOSTAT_INSTALLER"
 else
 	echo "No se encontro el instalador en descargas"
